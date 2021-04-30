@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 const MainWrapper = styled.div`
     background-color: whitesmoke;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,11 +10,15 @@ const MainWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.main `
-    display: block;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     margin: 20px 50px 20px 50px;
 `;
 
 const ArticleWrapper = styled.article`
+padding: 20px;
 `;
 
 export {

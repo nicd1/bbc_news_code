@@ -1,20 +1,16 @@
-import logo from './logo.svg';
-import {MainWrapper, ContentWrapper, ArticleWrapper} from './Components/Wrapper'
-import Header from './Components/Header/index.jsx'
+import {MainWrapper, ContentWrapper} from './Components/Wrapper';
+import ArticleContent from './Components/Article';
 import './App.css';
+import Pagination from './Components/Pagination';
 
 function App() {
   return (
-    <div className="App">
       <MainWrapper>
         <ContentWrapper>
-        <ArticleWrapper>
-          <Header>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Header>
-            <img src={logo} className="App-logo" alt="logo" />
-          </ArticleWrapper>
+        <ArticleContent header={'Lorem ipsum dolor sit amet, consectetur adipiscing elit'} content={'Etiam ornare nulla in sem pharetra, vel varius magna tempus. Praesent pulvinar eget dolor vitae elementum. Donec id velit at sem gravida tristique non vitae lorem.'}/>
         </ContentWrapper>
+        <Pagination />
       </MainWrapper>
-    </div>
   );
 }
 
