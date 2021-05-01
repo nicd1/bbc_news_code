@@ -1,17 +1,18 @@
 import React from 'react';
-import { PaginationBar, PaginationNo} from './index.jsx';
+import { Link } from 'react-router-dom';
+import { PaginationBar } from './index.jsx';
 
 function Pagination (){
     return(
         <PaginationBar>
-            <PaginationNo href='#'>&laquo;</PaginationNo>
-            <PaginationNo href='#'>1</PaginationNo>
-            <PaginationNo href='#'>2</PaginationNo>
-            <PaginationNo href='#'>3</PaginationNo>
-            <PaginationNo href='#'>4</PaginationNo>
-            <PaginationNo href='#'>5</PaginationNo>
-            <PaginationNo href='#'>&raquo;</PaginationNo>
-        </PaginationBar>
+                <Link to="/">&laquo;</Link>
+                <Link to="/article1">1</Link>
+                <Link to="/article2">2</Link>
+                <Link to="/article3">3</Link>
+                <Link to="/article4">4</Link>
+                <Link to="/article5">5</Link>
+                <Link to="/">&raquo;</Link>               
+            </PaginationBar>
     )
 };
 
