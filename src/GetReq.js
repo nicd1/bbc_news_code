@@ -1,83 +1,26 @@
-async function getArticleOne () {
+import axios from 'axios';
+import React, { useState } from 'react';
 
-    try {
-        const res = await fetch(`https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-1.json`, {
-            method: 'GET',
-        });
-  
-        const articleOneJSON = await res.json();
-        console.log(articleOneJSON)
-        return articleOneJSON;
-  
-    } catch (e) {
-        console.log(e)
-    }
-  }
-  
-  async function getArticleTwo () {
-  
-    try {
-        const res = await fetch(`https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-2.json`, {
-            method: 'GET',
-        });
-  
-        const articleTwoJSON = await res.json();
-        return articleTwoJSON;
-  
-    } catch (e) {
-        console.log(e)
-    }
-  }
-  
-  async function getArticleThree () {
-  
-    try {
-        const res = await fetch(`https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-3.json`, {
-            method: 'GET',
-        });
-  
-        const articleThreeJSON = await res.json();
-        return articleThreeJSON;
-  
-    } catch (e) {
-        console.log(e)
-    }
-  }
-  
-  async function getArticleFour () {
-  
-    try {
-        const res = await fetch(`https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-4.json`, {
-            method: 'GET',
-        });
-  
-        const articleFourJSON = await res.json();
-        return articleFourJSON;
-  
-    } catch (e) {
-        console.log(e)
-    }
-  }
-  
-  async function getArticleFive () {
-  
-    try {
-        const res = await fetch(`https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-5.json`, {
-            method: 'GET',
-        });
-  
-        const articleFiveJSON = await res.json();
-        return articleFiveJSON;
-  
-    } catch (e) {
-        console.log(e)
-    }
-  }
+async function getAllArticles() {
 
-export {
-    getArticleOne,
-    getArticleTwo,
-    getArticleThree,
-    getArticleFour,
-    getArticleFive
+    const axiosReq1 = axios.get('https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-1.json')
+    const axiosReq2 = axios.get('https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-2.json')
+    const axiosReq3 = axios.get('https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-3.json')
+    const axiosReq4 = axios.get('https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-4.json')
+    const axiosReq5 = axios.get('https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-5.json')
+  
+    await axios.all([axiosReq1, axiosReq2, axiosReq3, axiosReq4, axiosReq5]).then(axios.spread(function(res1, res2, res3, res4, res5){
+        console.log(res1)
+        const articleOne = res1;
+        console.log(res2)
+        const articleTwo = res2;
+        console.log(res3)
+        const articleThree = res3;
+        console.log(res4)
+        const articleFour = res4;
+        console.log(res5)
+        const articleFive = res5;
+    }))
 }
+
+export default getAllArticles;
