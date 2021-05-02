@@ -1,10 +1,11 @@
 import React,  {useState, useEffect } from 'react';
 import ArticleContent, { Paragraph } from '../Components/Article';
 
-function ArticleOne () {
-
+function ArticleOne ({ jsonContent }) {
+ 
     const [header, setHeader] = useState("");
     const [content, setContent] = useState("");
+    console.log(jsonContent, '____________JSONCONTENT');
 
     useEffect(() => {
         if (header === ""){
