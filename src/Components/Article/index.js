@@ -1,28 +1,53 @@
-import React from 'react';
-import logo from '../../logo.svg';
-import { Header, Subheading, Paragraph, List, Image } from '../Article/index.jsx'
+import React, { useState, useEffect } from 'react';
+import { getArticleByNumber } from '../../ArticleService';
+import { Header, Paragraph, List, Image } from '../Article/index.jsx'
 import { ArticleWrapper } from '../Wrapper';
 
-function ArticleContent ({ article }){
+function ArticleContent ({ articleNum }){
+
+  const [article, setArticle] = useState({});
+
+  useEffect(() => {
+    async function fetchArticles(){
+      await getArticleByNumber(articleNum).then(d => {
+        console.log(d);
+        setArticle(d);
+    })
+    }
+    fetchArticles();
+}, [articleNum]);
+
   return (
     <div>
       {article.body ?
-      <>
-        <Header>{article.title}</Header>
-        <Subheading></Subheading>
-        <ArticleWrapper>
-          <Image src={logo} className="App-logo" alt="logo" />
-        </ArticleWrapper>
-        <ol>
-          {article.body.map((item, i) => { 
-            console.log(item.model.text, '_______item model text');                       
-            return (<li key={i}>{item.type}: {item.model.text}</li>) 
+      <ArticleWrapper>
+          {article.body.map((item, i) => {
+            
+            switch(item.type) {
+              case "paragraph":
+                return (<Paragraph key={i}>{item.model.text}</Paragraph>) 
+              case "image":
+                return(<Image key={i} src={item.model.url} />)
+
+              case "heading":
+                return (<Header key={i}>{item.model.text}</Header>)
+
+              case "list":
+                if (item.model.type === "unordered") {
+                  return(<List>{item.model.items.map((item,i) => {
+                    return (<li key={i}>{item}</li>)
+                  })}</List>)
+                }
+                break
+              default:
+
+            }
+            
+            return (<Paragraph key={i}>{item.type}: {item.model.text}</Paragraph>) 
           })}
-        </ol>
-      </>
-       : null     
+      </ArticleWrapper>
+       : <span>Loading...</span>     
       }
-     
       </div>
   );
 }

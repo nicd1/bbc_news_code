@@ -1,13 +1,9 @@
 import React from 'react';
-import {MainWrapper, ContentWrapper} from './Components/Wrapper';
+import { MainWrapper, ContentWrapper, PaginationWrapper } from './Components/Wrapper';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Pagination from './Components/Pagination';
-import ArticleOne from './Pages/article1';
-import ArticleTwo from './Pages/article2';
-import ArticleThree from './Pages/article3';
-import ArticleFour from './Pages/article4';
-import ArticleFive from './Pages/article5';
-import Feedback from './Pages/feedback';
+import ArticleContent from './Components/Article'
+import Feedback from './Feedback';
 
 function App() {
 
@@ -15,16 +11,18 @@ function App() {
       <MainWrapper>
         <ContentWrapper>
           <Switch>
-          <Route path='/article1'><ArticleOne articleNum={1}/></Route>
-            <Route path='/article2'><ArticleTwo articleNum={2}/></Route>
-            <Route path='/article3'><ArticleThree articleNum={3}/></Route>
-            <Route path='/article4'><ArticleFour articleNum={4}/></Route>
-            <Route path='/article5'><ArticleFive articleNum={5}/></Route>
+          <Route path='/article1'><ArticleContent articleNum={1}/></Route>
+            <Route path='/article2'><ArticleContent articleNum={2}/></Route>
+            <Route path='/article3'><ArticleContent articleNum={3}/></Route>
+            <Route path='/article4'><ArticleContent articleNum={4}/></Route>
+            <Route path='/article5'><ArticleContent articleNum={5}/></Route>
             <Route path='/feedback'><Feedback /></Route>
           </Switch>
           <Redirect to="/article1" />
         </ContentWrapper>
-        <Pagination />
+        <PaginationWrapper>
+          <Pagination />
+        </PaginationWrapper>
       </MainWrapper>
   );
 }

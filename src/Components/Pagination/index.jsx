@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const PaginationBar = styled.nav`
-    padding: 40px;
+    padding: 10px;
 
     a {
         text-decoration: none;

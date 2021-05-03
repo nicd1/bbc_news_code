@@ -1,5 +1,5 @@
 import React,  {useState, useEffect } from 'react';
-import ArticleContent from '../Components/Article';
+import { Header, Paragraph } from './Components/Article/index.jsx';
 
 function Feedback(){
     const [header, setHeader] = useState("");
@@ -16,8 +16,15 @@ function Feedback(){
 
     return (
         <>
-       <h1>{header}</h1>
-       <h2>{content}</h2>
+       <Header>{header}</Header>
+       <Paragraph>{content}</Paragraph>
+       <form>
+           <label></label>
+       </form>
+       <label>I enjoyed these articles</label>
+       <button>i enjoyed these articles</button>
+       <label>I didn't enjoy these articles</label>
+       <button></button>
        </>
     )
 }
