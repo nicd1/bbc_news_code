@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {MainWrapper, ContentWrapper} from './Components/Wrapper';
-import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
-import './App.css';
-import getAllArticles from './GetReq'
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Pagination from './Components/Pagination';
 import ArticleOne from './Pages/article1';
 import ArticleTwo from './Pages/article2';
@@ -13,49 +11,20 @@ import Feedback from './Pages/feedback';
 
 function App() {
 
-  const [articles, setArticles] = useState();
-  const [locationPath, setLocationPath] = useState(false);
-
-  function LocationSet(){
-    const location = useLocation();
-    console.log(location.pathname);
-    if (location.pathname === '/article5'){
-      setLocationPath(true);
-    }
-  }
-
-  useEffect(() => {
-    if (locationPath){
-      LocationSet();
-    }
-  });
-  useEffect(() => {
-      let allArticles = [];
-      async function FetchArticles(){
-        if (articles === undefined){
-          allArticles = await getAllArticles();
-        setArticles(allArticles);
-      }
-    }
-    FetchArticles();
-  }, [articles]);
-
-  console.log(articles);
-
   return (
       <MainWrapper>
         <ContentWrapper>
           <Switch>
-            <Route path='/article1'><ArticleOne content={''} /></Route>
-            <Route path='/article2'><ArticleTwo content={''} /></Route>
-            <Route path='/article3'><ArticleThree content={''} /></Route>
-            <Route path='/article4'><ArticleFour content={''} /></Route>
-            <Route path='/article5'><ArticleFive content={''} /></Route>
-            <Route path='/feedback>'><Feedback /></Route>
+          <Route path='/article1'><ArticleOne articleNum={1}/></Route>
+            <Route path='/article2'><ArticleTwo articleNum={2}/></Route>
+            <Route path='/article3'><ArticleThree articleNum={3}/></Route>
+            <Route path='/article4'><ArticleFour articleNum={4}/></Route>
+            <Route path='/article5'><ArticleFive articleNum={5}/></Route>
+            <Route path='/feedback'><Feedback /></Route>
           </Switch>
           <Redirect to="/article1" />
         </ContentWrapper>
-        <Pagination location={locationPath}/>
+        <Pagination />
       </MainWrapper>
   );
 }

@@ -1,19 +1,30 @@
 import React from 'react';
 import logo from '../../logo.svg';
-import { Header, Image } from '../Article/index.jsx'
-import {ArticleWrapper} from '../Wrapper';
+import { Header, Subheading, Paragraph, List, Image } from '../Article/index.jsx'
+import { ArticleWrapper } from '../Wrapper';
 
-function ArticleContent ({ header, content }){
-
+function ArticleContent ({ article }){
   return (
-    <>
-      <Header>{header}</Header>
-      <ArticleWrapper>
-        <Image src={logo} className="App-logo" alt="logo" />
-        <p>{content}</p>
-      </ArticleWrapper>
+    <div>
+      {article.body ?
+      <>
+        <Header>{article.title}</Header>
+        <Subheading></Subheading>
+        <ArticleWrapper>
+          <Image src={logo} className="App-logo" alt="logo" />
+        </ArticleWrapper>
+        <ol>
+          {article.body.map((item, i) => { 
+            console.log(item.model.text, '_______item model text');                       
+            return (<li key={i}>{item.type}: {item.model.text}</li>) 
+          })}
+        </ol>
       </>
-  )
+       : null     
+      }
+     
+      </div>
+  );
 }
 
-export default ArticleContent;
+export default ArticleContent; 

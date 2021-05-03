@@ -1,21 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React,  {useState, useEffect } from 'react';
 import ArticleContent from '../Components/Article';
+import { getArticleByNumber } from '../ArticleService';
 
-function ArticleFour () {
+function ArticleFour ({ articleNum }) {
+ 
     const [header, setHeader] = useState("");
-    const [content, setContent] = useState("");
+    const [article, setArticle] = useState({});
 
     useEffect(() => {
+        async function fetchArticle(){
         if (header === ""){
-            setHeader("Test Header 4")
-        }
-        if (content === ""){
-            setContent("Test Content 4")
-        }
-    }, [header, content]); 
+            setHeader(article.title)
+        }       
+        await getArticleByNumber(articleNum).then(d => {
+            setArticle(d);
+        })
+    }
+    fetchArticle();
+    }, [])
 
     return (
-        <ArticleContent header={header} content={content}/>
+        <ArticleContent header={header} article={article}/>
     )
 }
 

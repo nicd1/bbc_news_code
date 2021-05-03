@@ -13,8 +13,13 @@ const Image = styled.img`
   width: 640;
 `;
 
+const Subheading = styled.h2`
+
+`;
+
 export {
     Header,
     Paragraph,
+    Subheading,
     Image
 }

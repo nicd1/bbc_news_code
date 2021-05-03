@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React,  {useState, useEffect } from 'react';
 import ArticleContent from '../Components/Article';
 
 function Feedback(){
@@ -15,7 +15,10 @@ function Feedback(){
     }, [header, content]); 
 
     return (
-        <ArticleContent header={header} content={content}/>
+        <>
+       <h1>{header}</h1>
+       <h2>{content}</h2>
+       </>
     )
 }
 

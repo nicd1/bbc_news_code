@@ -1,23 +1,22 @@
-import React,  {useState, useEffect } from 'react';
-import ArticleContent, { Paragraph } from '../Components/Article';
+import React, { useState, useEffect } from 'react';
+import ArticleContent from '../Components/Article';
+import { getArticleByNumber } from '../ArticleService';
 
-function ArticleOne ({ content }) {
+function ArticleOne ({ articleNum }) {
  
-    const [header, setHeader] = useState("");
-    const [articleContent, setArticleContent] = useState("");
-    console.log(content, '____________JSONCONTENT');
+    const [article, setArticle] = useState({});
 
     useEffect(() => {
-        if (header === ""){
-            setHeader("Lorem ipsum dolor sit amet, consectetur adipiscing elit")
-        }
-        if (content === ""){
-            setArticleContent("Etiam ornare nulla in sem pharetra, vel varius magna tempus. Praesent pulvinar eget dolor vitae elementum. Donec id velit at sem gravida tristique non vitae lorem.")
-        }
-    }, [header, content]); 
+        async function fetchArticle(){
+        await getArticleByNumber(articleNum).then(d => {
+                setArticle(d);
+            })     
+    }
+    fetchArticle();
+    }, [])
 
     return (
-        <ArticleContent header={header} content={articleContent}/>
+        <ArticleContent article={article}/>
     )
 }
 
