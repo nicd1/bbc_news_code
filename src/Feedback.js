@@ -1,6 +1,6 @@
 import React,  {useState, useEffect } from 'react';
 import { Header, Paragraph } from './Components/Article/index.jsx';
-import { ArticleWrapper } from './Components/Wrapper';
+import { FeedbackForm } from './Components/FeedbackForm';
 
 function Feedback(){
     const [header, setHeader] = useState("");
@@ -19,9 +19,7 @@ function Feedback(){
        <>
        <Header>{header}</Header>
        <Paragraph>{content}</Paragraph>
-       <form>
-           <label></label>
-       </form>
+       <FeedbackForm />
        <label>I enjoyed these articles</label>
        <button>i enjoyed these articles</button>
        <label>I didn't enjoy these articles</label>
