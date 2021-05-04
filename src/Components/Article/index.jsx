@@ -5,7 +5,17 @@ const Header = styled.h1`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: auto;
 `;
+
+const SubHeader = styled.h2`
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-style: italic;
+    margin-top: auto;
+`
 
 const Paragraph = styled.p`
     display: flex;
@@ -17,7 +27,9 @@ const Image = styled.img`
   height: 420;
   width: 640;
   display: block;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
   flex-direction: column;
 `;
 
@@ -31,5 +43,6 @@ export {
     Header,
     Paragraph,
     Image,
-    List
+    List,
+    SubHeader
 }

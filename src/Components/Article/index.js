@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getArticleByNumber } from '../../ArticleService';
-import { Header, Paragraph, List, Image } from '../Article/index.jsx'
+import { Header, SubHeader, Paragraph, List, Image } from '../Article/index.jsx'
 import { ArticleWrapper } from '../Wrapper';
 
 function ArticleContent ({ articleNum }){
@@ -20,7 +20,9 @@ function ArticleContent ({ articleNum }){
   return (
     <div>
       {article.body ?
-      <ArticleWrapper>
+      <>
+        <Header>{article.title}</Header>
+          <ArticleWrapper>
           {article.body.map((item, i) => {
             
             switch(item.type) {
@@ -30,7 +32,7 @@ function ArticleContent ({ articleNum }){
                 return(<Image key={i} src={item.model.url} />)
 
               case "heading":
-                return (<Header key={i}>{item.model.text}</Header>)
+                return (<SubHeader key={i}>{item.model.text}</SubHeader>)
 
               case "list":
                 if (item.model.type === "unordered") {
@@ -46,6 +48,7 @@ function ArticleContent ({ articleNum }){
             return (<Paragraph key={i}>{item.type}: {item.model.text}</Paragraph>) 
           })}
       </ArticleWrapper>
+      </>
        : <span>Loading...</span>     
       }
       </div>
