@@ -16,14 +16,10 @@ function Feedback(){
     }, [header, content]); 
 
     return (
-       <>
+        <>
        <Header>{header}</Header>
        <Paragraph>{content}</Paragraph>
        <FeedbackForm />
-       <label>I enjoyed these articles</label>
-       <button>i enjoyed these articles</button>
-       <label>I didn't enjoy these articles</label>
-       <button></button>
        </>
     )
 }
